@@ -1,5 +1,5 @@
 # Introduction
- *  This library code implements the driving code of [Aurora(V231) or Wide-temperature EPDs with iTC driver](https://www.pervasivedisplays.com/products/) made by [Pervasive Displays Inc (PDi)](https://www.pervasivedisplays.com/). This is compatible with [EPD Extension Kit Gen 3 (EXT3)](https://www.pervasivedisplays.com/product/epd-extension-kit-gen-3-ext3/) with embedded OTP LUT.
+ *  This library code implements the driving code of [Aurora(V231) or Wide-temperature EPDs with iTC driver and embedded OTP LUT](https://www.pervasivedisplays.com/products/) made by [Pervasive Displays Inc (PDi)](https://www.pervasivedisplays.com/). This is compatible with [EPD Extension Kit Gen 3 (EXT3)](https://www.pervasivedisplays.com/product/epd-extension-kit-gen-3-ext3/).
  *  It implements the global (GU) and fast update modes (FU).
  *  The library supports the following EPD sizes: 1.54", 2.13", 2.66", 2.71", 2.87", 3.70", 4.20", 4.37"
  *  This library was tested with Launchpad (Tiva-C) with TM4C123, MSP432P401R, Arduino M0 Pro, and Raspberry Pi Pico.
