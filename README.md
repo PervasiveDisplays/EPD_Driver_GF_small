@@ -53,7 +53,7 @@ For further wiring guidance, check out our Wiki: [EXT3](https://docs.pervasivedi
 #define SCREEN 271
 #include "globalupdate_src/demoImageData.h"
 #include "fastupdate_src/demoImageData.h"
-```
+``` c++
  *  Then select the appropriate EPD size, development board and extension kit:
 ```
 #define EPD_SIZE eScreen_EPD_271
