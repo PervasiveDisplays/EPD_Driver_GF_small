@@ -14,12 +14,12 @@
 
 // DEMO Image Set <Comment out when in User Mode>
 // Screen Size: 154, 213, 266, 271, 287, 370, 417, 437
-#define SCREEN 213
+#define SCREEN 271
 #include "globalupdate_src/demoImageData.h"
 #include "fastupdate_src/demoImageData.h"
 //------------------------------------------------------------
 
-#define EPD_SIZE eScreen_EPD_213
+#define EPD_SIZE eScreen_EPD_271
 #define BOARD_TYPE boardRaspberryPiPico_RP2040_EXT3
 
 void setup()
@@ -30,8 +30,6 @@ void setup()
 	epdtest.COG_initial_GU();
 	// Global Update Call
 	epdtest.globalUpdate(BW_monoBuffer, BW_0x00Buffer);
-	// delay(1000);
-	// epdtest.globalUpdate(BWR_blackBuffer, BWR_redBuffer); // for BWR EPDs
 
 	// Turn off CoG
 	epdtest.COG_powerOff();
