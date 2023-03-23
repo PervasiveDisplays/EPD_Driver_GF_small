@@ -40,7 +40,7 @@
 For further wiring guidance, check out our Wiki: [EXT3](https://docs.pervasivedisplays.com/epd-usage/development-kits/ext3-1).
 
 # EPD_Driver Demo
- *  The sample code implements a global update functionality for a [2.71" Spectra R2.0 EPD (E2271PS091)](https://www.pervasivedisplays.com/product/2-71-e-ink-displays//).  
+ *  The sample code implements both global and fast update functionality for a [2.71" Monochrome+Fast EPD (E2271PS091)](https://www.pervasivedisplays.com/product/2-71-e-ink-displays//).  
  
  First, a BW(black and white) image is flashed.  
   Then, after a two-second delay, a sequence of BW fast images are flashed.  
@@ -65,4 +65,4 @@ For further wiring guidance, check out our Wiki: [EXT3](https://docs.pervasivedi
  *  [PDi Product Line up](https://www.pervasivedisplays.com/products/)
  *  [EPD Extension Kit Gen 3 (EXT3)](https://www.pervasivedisplays.com/product/epd-extension-kit-gen-3-ext3/)
  *  [24/7 Support Service](https://www.pervasivedisplays.com/technical-support/)
-
+ *  [PDI Wiki](https://docs.pervasivedisplays.com/)
