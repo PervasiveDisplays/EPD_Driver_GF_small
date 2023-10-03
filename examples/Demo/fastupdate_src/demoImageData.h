@@ -14,6 +14,8 @@
 #include "fp_data/271/FuPu_Data.h"
 #elif(SCREEN==287)   //2.87"
 #include "fp_data/287/FuPu_Data.h"
+#elif(SCREEN==292)   //2.92"
+#include "fp_data/292/FuPu_Data.h"
 #elif(SCREEN==370)   //3.70"
 #include "fp_data/370/FuPu_Data.h"
 #elif(SCREEN==417)   //4.2"

@@ -47,6 +47,7 @@
 #define eScreen_EPD_266 (uint32_t)0x2600 ///< reference xE2266CSxxx
 #define eScreen_EPD_271 (uint32_t)0x2700 ///< reference xE2271CSxxx
 #define eScreen_EPD_287 (uint32_t)0x2800 ///< reference xE2287CSxxx
+#define eScreen_EPD_292 (uint32_t)0x2900 ///< reference xE2290CSxxx
 #define eScreen_EPD_370 (uint32_t)0x3700 ///< reference xE2370CSxxx
 #define eScreen_EPD_417 (uint32_t)0x4100 ///< reference xE2417CSxxx
 #define eScreen_EPD_437 (uint32_t)0x430C ///< reference xE2437CSxxx
@@ -65,6 +66,7 @@
 #define frameSize_EPD_EXT3_266 (uint32_t)(5624)
 #define frameSize_EPD_EXT3_271 (uint32_t)(5808)
 #define frameSize_EPD_EXT3_287 (uint32_t)(4736)
+#define frameSize_EPD_EXT3_292 (uint32_t)(8064)
 #define frameSize_EPD_EXT3_370 (uint32_t)(12480)
 #define frameSize_EPD_EXT3_417 (uint32_t)(15000)
 #define frameSize_EPD_EXT3_437 (uint32_t)(10560)

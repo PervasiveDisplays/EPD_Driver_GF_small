@@ -91,6 +91,14 @@ EPD_Driver::EPD_Driver(eScreen_EPD_t eScreen_EPD, pins_t board)
             _screenDiagonal = 287;
             _refreshTime = 14;
             break;
+			
+		case 0x29: // 2.9"
+
+            _screenSizeV = 384; // vertical = wide size
+            _screenSizeH = 168; // horizontal = small size
+            _screenDiagonal = 290;
+            _refreshTime = 14;
+            break;
 
         case 0x37: // 3.70"
 
@@ -168,7 +176,17 @@ void EPD_Driver::COG_initial_GU()
 	const uint8_t temp_in = register_data[2];
 	_sendIndexData( 0xe5, &temp_in, 1 );  //Input Temperature: 25C
 	_sendIndexData( 0xe0, &register_data[3], 1 );  //Active Temperature
-	_sendIndexData( 0x00, &register_data[4], 2);  //PSR	>> consult Application Note on Reading OTP
+	
+	if (pdi_size == 0x29)
+	{
+		const uint8_t settings[] = {0x55, 0x02};
+		_sendIndexData( 0x4d, &settings[0], 1);
+		_sendIndexData( 0xe9, &settings[1], 1);
+	}
+	else
+	{
+		_sendIndexData( 0x00, &register_data[4], 2);  //PSR	>> consult Application Note on Reading OTP
+	}
 }
 
 void EPD_Driver::COG_initial_FU()
@@ -207,8 +225,19 @@ void EPD_Driver::COG_initial_FU()
 	const uint8_t temp_in = register_data[2]+0x40;
 	_sendIndexData( 0xe5, &temp_in, 1 );  //Input Temperature: 25C
 	_sendIndexData( 0xe0, &register_data[3], 1 );  //Active Temperature
-	const uint8_t psr[] = {register_data[4]|0x10, register_data[5]|0x02};
-	_sendIndexData( 0x00, &psr[0], 2);  //PSR	>> consult Application Note on Reading OTP
+	
+	if (pdi_size == 0x29)
+	{
+		const uint8_t settings[] = {0x55, 0x02};
+		_sendIndexData( 0x4d, &settings[0], 1);
+		_sendIndexData( 0xe9, &settings[1], 1);
+	}
+	else
+	{
+		const uint8_t psr[] = {register_data[4]|0x10, register_data[5]|0x02};
+		_sendIndexData( 0x00, &psr[0], 2);  //PSR	>> consult Application Note on Reading OTP
+	}
+	
 	const uint8_t hold = 0x07;
 	_sendIndexData( 0x50, &hold, 1);  //CDI
 }

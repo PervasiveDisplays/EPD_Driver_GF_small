@@ -39,6 +39,11 @@
 #define BW_0x00Buffer        (uint8_t *) & image_287_296x128_BW_0x00
 #define BWR_blackBuffer      (uint8_t *) & image_287_296x128_BWR_blackBuffer
 #define BWR_redBuffer        (uint8_t *) & image_287_296x128_BWR_redBuffer
+#elif(SCREEN==292)   //2.90"
+#include "image_data/2.92/image_292_384x168_BW.c"
+#define BW_monoBuffer        (uint8_t *) & image_292_384x168_BW_mono
+#define BW_0x00Buffer        (uint8_t *) & image_292_384x168_BW_0x00
+
 #elif(SCREEN==370)   //3.70"
 #include "image_data/3.70/image_370_416x240_BW.c"
 #include "image_data/3.70/image_370_416x240_BWR.c"
