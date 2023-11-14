@@ -59,6 +59,14 @@ EPD_Driver::EPD_Driver(eScreen_EPD_t eScreen_EPD, pins_t board)
             _screenDiagonal = 154;
             _refreshTime = 16;
             break;
+			
+		case 0x20: // 2.06"
+
+            _screenSizeV = 248; // vertical = wide size
+            _screenSizeH = 128; // horizontal = small size
+            _screenDiagonal = 206;
+            _refreshTime = 15;
+            break;
 
         case 0x21: // 2.13"
 
@@ -170,9 +178,10 @@ void EPD_Driver::COG_initial_GU()
 	#endif
 
 	// Power On COG driver sequence
-	_reset(1, 5, 5, 5, 1);
+	_reset(5, 5, 10, 20);
 	
 	_softReset();
+	delay(5);
 	const uint8_t temp_in = register_data[2];
 	_sendIndexData( 0xe5, &temp_in, 1 );  //Input Temperature: 25C
 	_sendIndexData( 0xe0, &register_data[3], 1 );  //Active Temperature
@@ -218,10 +227,10 @@ void EPD_Driver::COG_initial_FU()
 	#endif
 
 	// Power On COG driver sequence
-	_reset(1, 5, 5, 5, 1);
+	_reset(5, 5, 10, 20);
 	
 	_softReset();
-
+	delay(5);
 	const uint8_t temp_in = register_data[2]+0x40;
 	_sendIndexData( 0xe5, &temp_in, 1 );  //Input Temperature: 25C
 	_sendIndexData( 0xe0, &register_data[3], 1 );  //Active Temperature
@@ -255,7 +264,6 @@ void EPD_Driver::COG_powerOff()
 	digitalWrite( spi_basic.panelDC, LOW );
 	digitalWrite( spi_basic.panelCS, LOW );
 	digitalWrite( spi_basic.panelBusy, LOW );
-	delay( 150 );
 	digitalWrite( spi_basic.panelReset, LOW );
 }
 
@@ -289,29 +297,14 @@ void EPD_Driver::fastUpdate(const uint8_t * data1s, const uint8_t * data2s)
 	if (!(pdi_size == 0x27 or pdi_size == 0x28 or pdi_size == 0x41))
 		_sendIndexData( 0x50, &hold, 1); //  Border setting
 
-	_DCDC_powerOn();
-
 	_sendIndexData( 0x10, data1s, image_data_size); //First or previous frame
 	_sendIndexData( 0x13, data2s, image_data_size );   //Second or new frame
 	
 	if (!(pdi_size == 0x27 or pdi_size == 0x28 or pdi_size == 0x41))
 		_sendIndexData( 0x50, &hold2, 1 );
-	
-	_displayRefresh();
 
-	/* uint8_t ii = 0;
-	while (ii < numLoops)
-	{
-		for (uint8_t j = 0; j < fastImgSize -1; j++)
-		{
-			_sendIndexData( 0x10, fastImgSet[j], image_data_size); //First or previous frame
-			_sendIndexData( 0x13, fastImgSet[j+1], image_data_size );   //Second or new frame
-			
-			_sendIndexData( 0x50, &hold2, 1 );
-			_displayRefresh();
-		}
-		ii++;
-	} */
+	_DCDC_powerOn();	
+	_displayRefresh();
 }
 
 // ---------- PROTECTED FUNCTIONS -----------
@@ -360,7 +353,7 @@ void EPD_Driver::_displayRefresh()
 // CoG driver power-on hard reset
 //		- INPUT:
 //			- none but requires global variables on SPI pinout and config register data
-void EPD_Driver::_reset(uint32_t ms1, uint32_t ms2, uint32_t ms3, uint32_t ms4, uint32_t ms5)
+void EPD_Driver::_reset(uint32_t ms1, uint32_t ms2, uint32_t ms3, uint32_t ms4)
 {
 	// note: group delays into one array
 	delay(ms1);
@@ -370,8 +363,6 @@ void EPD_Driver::_reset(uint32_t ms1, uint32_t ms2, uint32_t ms3, uint32_t ms4, 
     delay(ms3);
     digitalWrite(spi_basic.panelReset, HIGH);
     delay(ms4);
-    digitalWrite(spi_basic.panelCS, HIGH); // CS# = 1
-    delay(ms5);
 }
 
 // DC-DC power-on command

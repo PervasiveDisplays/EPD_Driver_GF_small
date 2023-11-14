@@ -6,6 +6,8 @@
 // Load Global Update Images
 #if (SCREEN==154)   //1.54"
 #include "fp_data/154/FuPu_Data.h"
+#elif(SCREEN==206)   //2.06"
+#include "fp_data/206/FuPu_Data.h"
 #elif(SCREEN==213)   //2.13"
 #include "fp_data/213/FuPu_Data.h"
 #elif(SCREEN==266)   //2.66"

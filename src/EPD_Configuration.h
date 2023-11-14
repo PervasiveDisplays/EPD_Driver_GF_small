@@ -42,15 +42,16 @@
 #define eScreen_EPD_t uint32_t ///< screen type
 ///
 /// * Monochrome screens and default colour screens
-#define eScreen_EPD_154 (uint32_t)0x150C ///< reference xE2154CSxxx
-#define eScreen_EPD_213 (uint32_t)0x2100 ///< reference xE2213CSxxx
-#define eScreen_EPD_266 (uint32_t)0x2600 ///< reference xE2266CSxxx
-#define eScreen_EPD_271 (uint32_t)0x2700 ///< reference xE2271CSxxx
-#define eScreen_EPD_287 (uint32_t)0x2800 ///< reference xE2287CSxxx
-#define eScreen_EPD_292 (uint32_t)0x2900 ///< reference xE2290CSxxx
-#define eScreen_EPD_370 (uint32_t)0x3700 ///< reference xE2370CSxxx
-#define eScreen_EPD_417 (uint32_t)0x4100 ///< reference xE2417CSxxx
-#define eScreen_EPD_437 (uint32_t)0x430C ///< reference xE2437CSxxx
+#define eScreen_EPD_154 (uint32_t)0x150C ///< reference xE2154xSxxx
+#define eScreen_EPD_206 (uint32_t)0x2000 ///< reference xE2206xSxxx
+#define eScreen_EPD_213 (uint32_t)0x2100 ///< reference xE2213xSxxx
+#define eScreen_EPD_266 (uint32_t)0x2600 ///< reference xE2266xSxxx
+#define eScreen_EPD_271 (uint32_t)0x2700 ///< reference xE2271xSxxx
+#define eScreen_EPD_287 (uint32_t)0x2800 ///< reference xE2287xSxxx
+#define eScreen_EPD_292 (uint32_t)0x2900 ///< reference xE2290xSxxx
+#define eScreen_EPD_370 (uint32_t)0x3700 ///< reference xE2370xSxxx
+#define eScreen_EPD_417 (uint32_t)0x4100 ///< reference xE2417xSxxx
+#define eScreen_EPD_437 (uint32_t)0x430C ///< reference xE2437xSxxx
 
 /// @}
 
@@ -62,6 +63,7 @@
 ///
 
 #define frameSize_EPD_EXT3_154 (uint32_t)(2888)
+#define frameSize_EPD_EXT3_206 (uint32_t)(2756)
 #define frameSize_EPD_EXT3_213 (uint32_t)(2756)
 #define frameSize_EPD_EXT3_266 (uint32_t)(5624)
 #define frameSize_EPD_EXT3_271 (uint32_t)(5808)
@@ -71,9 +73,6 @@
 #define frameSize_EPD_EXT3_417 (uint32_t)(15000)
 #define frameSize_EPD_EXT3_437 (uint32_t)(10560)
 
-// Screen resolutions for small and mid-sized EPDs
-// const uint16_t EPD_idx[] = {0x15, 0x21, 0x26, 0x27, 0x28, 0x37, 0x41, 0x43, 0x58, 0x74};
-// const long image_data_size[] = { 2888, 2756, 5624, 5808, 4736, 12480, 15000, 10560, 23040, 48000};
 
 /// @name 2- List of pre-configured boards
 /// @{

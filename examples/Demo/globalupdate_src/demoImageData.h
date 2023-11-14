@@ -11,6 +11,10 @@
 #define BW_0x00Buffer        (uint8_t *) & image_154_152x152_BW_0x00
 #define BWR_blackBuffer      (uint8_t *) & image_154_152x152_BWR_blackBuffer
 #define BWR_redBuffer        (uint8_t *) & image_154_152x152_BWR_redBuffer
+#elif(SCREEN==206)   //2.06"
+#include "image_data/2.06/image_206_248x128_BW.c"
+#define BW_monoBuffer        (uint8_t *) & image_206_248x128_BW_mono
+#define BW_0x00Buffer        (uint8_t *) & image_206_248x128_BW_0x00
 #elif(SCREEN==213)   //2.13"
 #include "image_data/2.13/image_213_212x104_BW.c"
 #include "image_data/2.13/image_213_212x104_BWR.c"

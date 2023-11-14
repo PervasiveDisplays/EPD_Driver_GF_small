@@ -107,7 +107,7 @@ class EPD_Driver
   /// @param ms1 up to ms5; millisecond delays
   /// @note Implemented after VCC/VDD Turn-on
   ///
-	void _reset(uint32_t ms1, uint32_t ms2, uint32_t ms3, uint32_t ms4, uint32_t ms5);
+	void _reset(uint32_t ms1, uint32_t ms2, uint32_t ms3, uint32_t ms4);
 	
   ///
   /// @brief DC-DC power-on command
