@@ -49,14 +49,14 @@ For further wiring guidance, check out our Wiki: [EXT3](https://docs.pervasivedi
 ``` c++
 //------------------------------------------------------------
 // DEMO Image Set <Comment out when in User Mode>
-// Screen Size: 154, 213, 266, 271, 287, 292, 370, 417, 437
-#define SCREEN 292
+// Screen Size: 154, 206, 213, 266, 271, 287, 292, 370, 417, 437
+#define SCREEN 271
 #include "globalupdate_src/demoImageData.h"
 #include "fastupdate_src/demoImageData.h"
 ```
  *  Then select the appropriate EPD size, development board and extension kit:
 ``` c++
-#define EPD_SIZE eScreen_EPD_292
+#define EPD_SIZE eScreen_EPD_271
 #define BOARD_TYPE boardRaspberryPiPico_RP2040_EXT3
 ```
 
