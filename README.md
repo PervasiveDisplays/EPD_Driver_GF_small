@@ -1,7 +1,7 @@
 # Introduction
  *  This library code implements the driving code of [Aurora(V231) or Wide-temperature EPDs with iTC driver and embedded OTP LUT](https://www.pervasivedisplays.com/products/) made by [Pervasive Displays Inc (PDi)](https://www.pervasivedisplays.com/). This is compatible with [EPD Extension Kit Gen 3 (EXT3)](https://www.pervasivedisplays.com/product/epd-extension-kit-gen-3-ext3/).
  *  It implements the global (GU) and fast update modes (FU).
- *  The library supports the following EPD sizes: 1.54", 2.06", 2.13", 2.66", 2.71", 2.87", 2.92", 3.70", 4.20", 4.37"
+ *  The library supports the following EPD sizes: 1.52", 1.54", 2.06", 2.13", 2.66", 2.71", 2.92", 3.70", 4.20", 4.37"
  *  This library was tested with Launchpad (Tiva-C) with TM4C123, MSP432P401R, Arduino M0 Pro, and Raspberry Pi Pico.
 
 # Installation
@@ -49,14 +49,14 @@ For further wiring guidance, check out our Wiki: [EXT3](https://docs.pervasivedi
 ``` c++
 //------------------------------------------------------------
 // DEMO Image Set <Comment out when in User Mode>
-// Screen Size: 154, 206, 213, 266, 271, 287, 292, 370, 417, 437
-#define SCREEN 271
+// Screen Size: 152, 154, 206, 213, 266, 271, 292, 370, 417, 437
+#define SCREEN 152
 #include "globalupdate_src/demoImageData.h"
 #include "fastupdate_src/demoImageData.h"
 ```
  *  Then select the appropriate EPD size, development board and extension kit:
 ``` c++
-#define EPD_SIZE eScreen_EPD_271
+#define EPD_SIZE eScreen_EPD_152
 #define BOARD_TYPE boardRaspberryPiPico_RP2040_EXT3
 ```
 
@@ -66,9 +66,3 @@ For further wiring guidance, check out our Wiki: [EXT3](https://docs.pervasivedi
  *  [EPD Extension Kit Gen 3 (EXT3)](https://www.pervasivedisplays.com/product/epd-extension-kit-gen-3-ext3/)
  *  [24/7 Support Service](https://www.pervasivedisplays.com/technical-support/)
  *  [PDI Wiki](https://docs.pervasivedisplays.com/)
-
-# Licence
-
-**Copyright** &copy; Pervasive Displays, 2010-2023
-
-**Licence** [Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)](./LICENCE.md)

@@ -42,7 +42,8 @@
 #define eScreen_EPD_t uint32_t ///< screen type
 ///
 /// * Monochrome screens and default colour screens
-#define eScreen_EPD_154 (uint32_t)0x150C ///< reference xE2154xSxxx
+#define eScreen_EPD_152 (uint32_t)0x1520 ///< reference xE2152KSxxx
+#define eScreen_EPD_154 (uint32_t)0x1540 ///< reference xE2154xSxxx
 #define eScreen_EPD_206 (uint32_t)0x2000 ///< reference xE2206xSxxx
 #define eScreen_EPD_213 (uint32_t)0x2100 ///< reference xE2213xSxxx
 #define eScreen_EPD_266 (uint32_t)0x2600 ///< reference xE2266xSxxx
@@ -155,6 +156,8 @@ const pins_t boardArduinoM0Pro_EXT3 =
 //0x00, soft-reset, temperature, active temp, PSR0, PSR1
 const uint8_t register_data_sm[] = { 0x00, 0x0e, 0x19, 0x02, 0xcf, 0x8d };
 
+//TSSET, PSR_GU, Border, PSR_FU
+const uint8_t register_data_152[] = { 0x19, 0xd7, 0xc0, 0xdf, 0x00, 0x00};
 /// @}
 
 #endif // hV_CONFIGURATION_RELEASE

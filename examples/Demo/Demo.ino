@@ -13,13 +13,13 @@
 #include <EPD_Driver.h>
 
 // DEMO Image Set <Comment out when in User Mode>
-// Screen Size: 154, 206, 213, 266, 271, 287, 292, 370, 417, 437
-#define SCREEN 271
+// Screen Size: 152, 154, 206, 213, 266, 271, 292, 370, 417, 437
+#define SCREEN 152
 #include "globalupdate_src/demoImageData.h"
 #include "fastupdate_src/demoImageData.h"
 //------------------------------------------------------------
 
-#define EPD_SIZE eScreen_EPD_271
+#define EPD_SIZE eScreen_EPD_152
 #define BOARD_TYPE boardRaspberryPiPico_RP2040_EXT3
 
 void setup()

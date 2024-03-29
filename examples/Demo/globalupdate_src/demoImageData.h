@@ -4,7 +4,12 @@
 */
 
 // Load Global Update Images
-#if (SCREEN==154)   //1.54"
+#if (SCREEN==152)   //1.52"
+#include "image_data/1.52/152_1.c"
+#include "image_data/1.52/white.c"
+#define BW_monoBuffer        (uint8_t *) & Img_152_gu
+#define BW_0x00Buffer        (uint8_t *) & Img_white_gu
+#elif (SCREEN==154)   //1.54"
 #include "image_data/1.54/image_154_152x152_BW.c"
 #include "image_data/1.54/image_154_152x152_BWR.c"
 #define BW_monoBuffer        (uint8_t *) & image_154_152x152_BW_mono
@@ -36,13 +41,6 @@
 #define BW_0x00Buffer        (uint8_t *) & image_271_264x176_BW_0x00
 #define BWR_blackBuffer      (uint8_t *) & image_271_264x176_BWR_blackBuffer
 #define BWR_redBuffer        (uint8_t *) & image_271_264x176_BWR_redBuffer
-#elif(SCREEN==287)   //2.87"
-#include "image_data/2.87/image_287_296x128_BW.c"
-#include "image_data/2.87/image_287_296x128_BWR.c"
-#define BW_monoBuffer        (uint8_t *) & image_287_296x128_BW_mono
-#define BW_0x00Buffer        (uint8_t *) & image_287_296x128_BW_0x00
-#define BWR_blackBuffer      (uint8_t *) & image_287_296x128_BWR_blackBuffer
-#define BWR_redBuffer        (uint8_t *) & image_287_296x128_BWR_redBuffer
 #elif(SCREEN==292)   //2.90"
 #include "image_data/2.92/image_292_384x168_BW.c"
 #define BW_monoBuffer        (uint8_t *) & image_292_384x168_BW_mono
