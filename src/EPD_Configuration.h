@@ -48,6 +48,7 @@
 #define eScreen_EPD_213 (uint32_t)0x2100 ///< reference xE2213xSxxx
 #define eScreen_EPD_266 (uint32_t)0x2600 ///< reference xE2266xSxxx
 #define eScreen_EPD_271 (uint32_t)0x2700 ///< reference xE2271xSxxx
+#define eScreen_EPD_27A (uint32_t)0x27A0 ///< reference xE2271KS0Cx
 #define eScreen_EPD_287 (uint32_t)0x2800 ///< reference xE2287xSxxx
 #define eScreen_EPD_292 (uint32_t)0x2900 ///< reference xE2290xSxxx
 #define eScreen_EPD_370 (uint32_t)0x3700 ///< reference xE2370xSxxx
@@ -89,7 +90,7 @@
 
 struct pins_t
 {
-    // uint8_t panelSCL;
+    uint8_t panelClock;
     ///< EXT3 pin 1 Black -> +3.3V
     ///< EXT3 pin 2 Brown -> SPI SCK
     uint8_t panelBusy; ///< EXT3 pin 3 Red
@@ -97,7 +98,7 @@ struct pins_t
     uint8_t panelReset; ///< EXT3 pin 5 Yellow
     ///< EXT3 pin 6 Green -> SPI MISO
     ///< EXT3 pin 7 Blue -> SPI MOSI
-    // uint8_t panelSDA;
+    uint8_t panelData;
     uint8_t panelCS;
     uint8_t panelON_EXT2;
     uint8_t panelSPI43_EXT2;
@@ -109,9 +110,11 @@ struct pins_t
 ///
 const pins_t boardLaunchPad_EXT3 =
 {
+	.panelClock = 7,
     .panelBusy = 11, ///< EXT3 pin 3 Red
     .panelDC = 12, ///< EXT3 pin 4 Orange
     .panelReset = 13, ///< EXT3 pin 5 Yellow
+	.panelData = 15,
     .panelCS = 19,
     .panelON_EXT2 = NOT_CONNECTED,
     .panelSPI43_EXT2 = NOT_CONNECTED,
@@ -123,9 +126,11 @@ const pins_t boardLaunchPad_EXT3 =
 ///
 const pins_t boardRaspberryPiPico_RP2040_EXT3 =
 {
+	.panelClock = 18,
     .panelBusy = 13, ///< EXT3 pin 3 Red -> GP13
     .panelDC = 12, ///< EXT3 pin 4 Orange -> GP12
     .panelReset = 11, ///< EXT3 pin 5 Yellow -> GP11
+	.panelData = 19,
     .panelCS = 17,
     .panelON_EXT2 = NOT_CONNECTED,
     .panelSPI43_EXT2 = NOT_CONNECTED,
@@ -137,9 +142,11 @@ const pins_t boardRaspberryPiPico_RP2040_EXT3 =
 ///
 const pins_t boardArduinoM0Pro_EXT3 =
 {
+	.panelClock = 13,
     .panelBusy = 4, ///< EXT3 pin 3 Red
     .panelDC = 5, ///< EXT3 pin 4 Orange
     .panelReset = 6, ///< EXT3 pin 5 Yellow
+	.panelData = 12,
     .panelCS = 8,
     .panelON_EXT2 = NOT_CONNECTED,
     .panelSPI43_EXT2 = NOT_CONNECTED,

@@ -12,12 +12,12 @@ EPD_Driver	KEYWORD1
 # Methods and Functions (KEYWORD2)
 #######################################
 
-COG_initial	KEYWORD2
+COG_getOTP	KEYWORD2
+COG_initial_GU	KEYWORD2
+COG_initial_FU	KEYWORD2
 COG_powerOff	KEYWORD2
 globalUpdate	KEYWORD2
-updateLUT	KEYWORD2
 fastUpdate	KEYWORD2
-partialUpdate	KEYWORD2
 
 #######################################
 # Instances (KEYWORD2)

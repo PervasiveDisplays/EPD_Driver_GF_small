@@ -25,7 +25,7 @@
 void setup()
 {
 	EPD_Driver epdtest(EPD_SIZE, BOARD_TYPE);
-
+	epdtest.COG_getOTP();
 	// Initialize CoG for GU
 	epdtest.COG_initial_GU();
 	// Global Update Call

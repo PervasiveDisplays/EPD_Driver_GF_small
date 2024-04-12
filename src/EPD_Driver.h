@@ -53,7 +53,7 @@ class EPD_Driver
 	EPD_Driver(eScreen_EPD_t eScreen_EPD, pins_t board);
     
 	// CoG Functions
-
+  void COG_getOTP();
 	///
   /// @brief COG initialization
   /// @note Implements Tcon (COG) power-on and temperature input to COG
@@ -81,7 +81,9 @@ class EPD_Driver
   protected:
 
 	// COG Utilities
-
+	uint8_t _OTPread();
+	void _OTPwrite(uint8_t value);
+	
   ///
   /// @brief SPI transfer protocol for index and data transmit to COG
   /// @param index target register address

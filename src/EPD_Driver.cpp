@@ -156,6 +156,92 @@ EPD_Driver::EPD_Driver(eScreen_EPD_t eScreen_EPD, pins_t board)
 		memcpy(register_data, register_data_sm, sizeof(register_data_sm));
 }
 
+void EPD_Driver::COG_getOTP()
+{
+	// Screens with no OTP
+    if ((pdi_size == 0x2900) or (pdi_size == 0x1520))
+    {
+        return; // No PSR
+    }
+	
+	pinMode( spi_basic.panelDC, OUTPUT );
+	digitalWrite(spi_basic.panelDC, HIGH);
+	pinMode( spi_basic.panelReset, OUTPUT );
+	digitalWrite(spi_basic.panelReset, HIGH);
+	pinMode( spi_basic.panelCS, OUTPUT );
+	digitalWrite(spi_basic.panelCS, HIGH);
+	
+	_reset(0, 5, 5, 10, 20);
+    uint8_t ui8 = 0;
+    uint16_t offsetA5 = 0x0000;
+    uint16_t offsetPSR = 0x0000;
+    uint16_t u_readBytes = 2;
+
+    digitalWrite(spi_basic.panelDC, LOW); // Command
+    digitalWrite(spi_basic.panelCS, LOW); // Select
+    _OTPwrite(0xa2);
+    digitalWrite(spi_basic.panelCS, HIGH); // Unselect
+    delay(10);
+
+    digitalWrite(spi_basic.panelDC, HIGH); // Data
+    digitalWrite(spi_basic.panelCS, LOW); // Select
+    ui8 = _OTPread(); // Dummy
+    digitalWrite(spi_basic.panelCS, HIGH); // Unselect
+
+    digitalWrite(spi_basic.panelCS, LOW); // Select
+    ui8 = _OTPread(); // First byte to be checked
+    digitalWrite(spi_basic.panelCS, HIGH); // Unselect
+	Serial.println(ui8, HEX);
+	
+	// Check bank
+    uint8_t bank = ((ui8 == 0xa5) ? 0 : 1);
+	
+	switch (pdi_size)
+	{	
+		case 0x2700: // 2.71"
+			offsetPSR = 0x004b;
+			offsetA5 = 0x0000;		
+			break;
+			
+		case 0x1540: // 1.54"
+		case 0x2600: // 2.66"
+		case 0x27A0: // 2.71"A
+		case 0x430C: // 4.37"
+			offsetPSR = (bank == 0) ? 0x0fb4 : 0x1fb4;
+			offsetA5 = (bank == 0) ? 0x0000 : 0x1000;
+			break;
+
+		case 0x2060: // 2.06"
+		case 0x2100: // 2.13"
+			offsetPSR = (bank == 0) ? 0x0b1b : 0x171b;
+			offsetA5 = (bank == 0) ? 0x0000 : 0x0c00;
+			break;
+			
+		case 0x4100: // 4.17"
+			offsetPSR = (bank == 0) ? 0x0b1f : 0x171f;
+			offsetA5 = (bank == 0) ? 0x0000 : 0x0c00;
+			break;
+
+		default:
+			break;
+	}
+	
+	for (uint16_t index = offsetA5 + 1; index < offsetPSR; index += 1)
+    {
+        digitalWrite(spi_basic.panelCS, LOW); // Select
+        ui8 = _OTPread();
+        digitalWrite(spi_basic.panelCS, HIGH); // Unselect
+    }
+    // Populate COG_initialData
+    for (uint16_t index = 0; index < u_readBytes; index += 1)
+    {
+        digitalWrite(spi_basic.panelCS, LOW); // Select
+        ui8 = _OTPread(); // Read OTP
+		register_data[4+index] = ui8;
+        digitalWrite(spi_basic.panelCS, HIGH); // Unselect
+    }
+}
+
 // CoG initialization function
 //		Implements Tcon (COG) power-on and temperature input to COG
 //		- INPUT:
@@ -225,9 +311,8 @@ void EPD_Driver::COG_initial_GU()
 }
 
 void EPD_Driver::COG_initial_FU()
-{	
+{
 	pinMode( spi_basic.panelBusy, INPUT );     //All Pins 0
-	
 	pinMode( spi_basic.panelDC, OUTPUT );
 	digitalWrite(spi_basic.panelDC, HIGH);
 	pinMode( spi_basic.panelReset, OUTPUT );
@@ -377,6 +462,43 @@ void EPD_Driver::fastUpdate(const uint8_t * data1s, const uint8_t * data2s)
 }
 
 // ---------- PROTECTED FUNCTIONS -----------
+
+// Read OTP
+uint8_t EPD_Driver::_OTPread()
+{
+    uint8_t value = 0;
+
+    pinMode(spi_basic.panelClock, OUTPUT);
+    pinMode(spi_basic.panelData, INPUT);
+
+    for (uint8_t i = 0; i < 8; ++i)
+    {
+        digitalWrite(spi_basic.panelClock, HIGH);
+        delayMicroseconds(1);
+        value |= digitalRead(spi_basic.panelData) << (7 - i);
+        digitalWrite(spi_basic.panelClock, LOW);
+        delayMicroseconds(1);
+    }
+
+    return value;
+}
+
+// Write OTP
+void EPD_Driver::_OTPwrite(uint8_t value)
+{
+    pinMode(spi_basic.panelClock, OUTPUT);
+    pinMode(spi_basic.panelData, OUTPUT);
+
+    for (uint8_t i = 0; i < 8; i++)
+    {
+        digitalWrite(spi_basic.panelData, !!(value & (1 << (7 - i))));
+        delayMicroseconds(1);
+        digitalWrite(spi_basic.panelClock, HIGH);
+        delayMicroseconds(1);
+        digitalWrite(spi_basic.panelClock, LOW);
+        delayMicroseconds(1);
+    }
+}
 
 // SPI transfer function
 //		Implements SPI transfer of index and data (consult user manual for EPD SPI process)
