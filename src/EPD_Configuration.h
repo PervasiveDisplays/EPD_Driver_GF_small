@@ -44,7 +44,7 @@
 /// * Monochrome screens and default colour screens
 #define eScreen_EPD_152 (uint32_t)0x1520 ///< reference xE2152KSxxx
 #define eScreen_EPD_154 (uint32_t)0x1540 ///< reference xE2154xSxxx
-#define eScreen_EPD_206 (uint32_t)0x2000 ///< reference xE2206xSxxx
+#define eScreen_EPD_206 (uint32_t)0x2060 ///< reference xE2206xSxxx
 #define eScreen_EPD_213 (uint32_t)0x2100 ///< reference xE2213xSxxx
 #define eScreen_EPD_266 (uint32_t)0x2600 ///< reference xE2266xSxxx
 #define eScreen_EPD_271 (uint32_t)0x2700 ///< reference xE2271xSxxx
