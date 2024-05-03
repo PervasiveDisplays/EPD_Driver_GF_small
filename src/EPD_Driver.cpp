@@ -283,7 +283,7 @@ void EPD_Driver::COG_initial_GU()
 		while ( digitalRead( spi_basic.panelBusy ) != LOW );
 
 		_sendIndexData( 0x1a, &register_data[0], 1 );  //Input Temperature: 25C
-		_sendIndexData( 0x22, &register_data[1], 1 );  //PSR 0xdf
+		_sendIndexData( 0x22, &register_data[1], 1 );  //PSR 0xd7
 	}
 	else
 	{
