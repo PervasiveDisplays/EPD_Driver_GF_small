@@ -206,6 +206,7 @@ void EPD_Driver::COG_getOTP()
 		case 0x1540: // 1.54"
 		case 0x2600: // 2.66"
 		case 0x27A0: // 2.71"A
+		case 0x3700: // 3.70"
 		case 0x430C: // 4.37"
 			offsetPSR = (bank == 0) ? 0x0fb4 : 0x1fb4;
 			offsetA5 = (bank == 0) ? 0x0000 : 0x1000;
