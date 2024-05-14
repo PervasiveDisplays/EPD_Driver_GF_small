@@ -92,7 +92,8 @@ EPD_Driver::EPD_Driver(eScreen_EPD_t eScreen_EPD, pins_t board)
             _refreshTime = 15;
             break;
 
-        case 0x2700: // 2.71"
+		case 0x2700: // 2.71"
+        case 0x27A0: // 2.71(A)"
 
             _screenSizeV = 264; // vertical = wide size
             _screenSizeH = 176; // horizontal = small size
