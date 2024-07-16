@@ -64,5 +64,5 @@ For further wiring guidance, check out our Wiki: [EXT3](https://docs.pervasivedi
  *  For more information, please visit [Pervasive Displays, Inc. (龍亭新技股份有限公司)](https://www.pervasivedisplays.com/)
  *  [PDi Product Line up](https://www.pervasivedisplays.com/products/)
  *  [EPD Extension Kit Gen 3 (EXT3)](https://www.pervasivedisplays.com/product/epd-extension-kit-gen-3-ext3/)
- *  [24/7 Support Service](https://www.pervasivedisplays.com/technical-support/)
+ *  [Support Service](https://www.pervasivedisplays.com/technical-support/)
  *  [PDI Wiki](https://docs.pervasivedisplays.com/)
